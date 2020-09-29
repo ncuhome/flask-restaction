@@ -304,11 +304,12 @@ class Api:
                         self.make_action(fn, sp, meta_action)
 
         for action_name in actions:
+            url_prefix = "/api"
             if action_name == "":
-                url = "/" + name
+                url = url_prefix + "/" + name
                 endpoint = name
             else:
-                url = "/{0}/{1}".format(name, action_name)
+                url = url_prefix + "/{0}/{1}".format(name, action_name)
                 endpoint = "{0}@{1}".format(name, action_name)
             action_group = actions[action_name]
             self.app.add_url_rule(
